@@ -3,7 +3,7 @@ from django.http.response import HttpResponse, HttpResponseRedirect, Http404
 from django.views.generic import View
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
-from .models import CustomUser
+# from .models import CustomUser
 
 
 class LoginView(View):
@@ -29,20 +29,20 @@ class RegisterView(View):
     def get(self, request):
         pass
 
-    def post(self, request):
-        errors = []
-        username = request.POST.get("username", "")
-        pwd1 = request.POST.get("password", "")
-        pwd2 = request.POST.get("password", "")
-        if(pwd1 != pwd2):
-            errors.append("两次输入密码不一致")
-        else:
-            user = CustomUser.objects.create_user(username, pwd1)
-            user.save()
-            userlogin = auth.authenticate(username=username, password=pwd1)
-            return HttpResponseRedirect('/')
-
-        return render_to_response("register.html", {'errors': errors})
+    # def post(self, request):
+    #     errors = []
+    #     username = request.POST.get("username", "")
+    #     pwd1 = request.POST.get("password", "")
+    #     pwd2 = request.POST.get("password", "")
+    #     if(pwd1 != pwd2):
+    #         errors.append("两次输入密码不一致")
+    #     else:
+    #         user = CustomUser.objects.create_user(username, pwd1)
+    #         user.save()
+    #         userlogin = auth.authenticate(username=username, password=pwd1)
+    #         return HttpResponseRedirect('/')
+    #
+    #     return render_to_response("register.html", {'errors': errors})
 
 class TestView(View):
 

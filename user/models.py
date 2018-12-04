@@ -4,13 +4,13 @@ from expert.models import BasicInfo
 
 
 class CustomUser(AbstractUser):
-    username = models.CharField(max_length=255, blank=True, null=True, db_index=True)
+    nickname = models.CharField(max_length=255, blank=False, null=True, db_index=True)
 
     class Meta:
         verbose_name = "用户信息"
 
     def __str__(self):
-        return self.name
+        return self.nickname
 
 
 class ExpertGroup(models.Model):
