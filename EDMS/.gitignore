@@ -1,0 +1,2 @@
+#setting文件中存放着数据库服务器密码，忽略
+settings.py
